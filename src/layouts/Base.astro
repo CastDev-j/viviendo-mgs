@@ -1,50 +1,232 @@
 ---
 import BackToTopAstroButton from "@/components/BackToTopAstroButton.astro";
-import config from "@/config/config.json";
-import menu from "@/config/menu.json";
 import Footer from "@/layouts/partials/Footer.astro";
 import "@/styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import Header from "@/layouts/partials/Header";
 
-// types for frontmatters
 export interface Props {
   title?: string;
-  meta_title?: string;
   description?: string;
   image?: string;
   noindex?: boolean;
-  canonical?: string;
+  canonicalURL?: string;
 }
 
-export interface ChildNavigationLink {
-  name: string;
-  url: string;
-}
+const siteConfig = {
+  title: "Viviendo Migransueño",
+  baseURL: "https://viviendo-mi-gran-sueno.vercel.app",
+  favicon: "/images/favicon.png",
+  logo: "/images/logo.png",
+  author: "CastDev",
+  defaultImage: "/images/og-image.png",
+  defaultDescription:
+    "Viviendo Migransueño A.C. es una organización sin fines de lucro que cumple los sueños de niños y niñas con cáncer de escasos recursos en Celaya, Guanajuato. Ofrecemos viajes nacionales, fiestas, conocer a algún ídolo, juguetes anhelados y cambio de guardaropa.",
+  phone: "+52-461-116-9054",
+  email: "viviendo.mgsueno@gmail.com",
+  address: {
+    street:
+      "Calle Capiro #116, Fracc. Xochipilli, Colonia Laureles 1ra sección",
+    city: "Celaya",
+    state: "Guanajuato",
+    postalCode: "38020",
+    country: "México",
+  },
+  coordinates: {
+    lat: "20.5351",
+    lng: "-100.83131",
+  },
+  schedule: "Lunes a Domingo de 9:00 - 18:00 hrs",
+  social: {
+    facebook: "https://www.facebook.com/profile.php?id=100052241268987",
+    instagram: "https://www.instagram.com/viviendo_migransueno/",
+    youtube: "https://www.youtube.com/@viviendomigransueno1307",
+    whatsapp: "https://wa.me/524611169054",
+  },
+};
 
-export interface NavigationLink {
-  name: string;
-  url: string;
-  hasChildren?: boolean;
-  children?: ChildNavigationLink[];
-}
+const {
+  title = siteConfig.title,
+  description = siteConfig.defaultDescription,
+  image = siteConfig.defaultImage,
+  noindex = false,
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+} = Astro.props;
+
+const fullTitle =
+  title === siteConfig.title ? title : `${title} | ${siteConfig.title}`;
+const fullImageURL = new URL(image, Astro.site).href;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  name: "Viviendo Migransueño A.C.",
+  alternateName: "Viviendo mi gran sueño",
+  url: siteConfig.baseURL,
+  logo: new URL(siteConfig.logo, Astro.site).href,
+  description: siteConfig.defaultDescription,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.address.street,
+    addressLocality: siteConfig.address.city,
+    addressRegion: siteConfig.address.state,
+    postalCode: siteConfig.address.postalCode,
+    addressCountry: "MX",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: siteConfig.coordinates.lat,
+    longitude: siteConfig.coordinates.lng,
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: siteConfig.phone,
+    contactType: "customer service",
+    email: siteConfig.email,
+    areaServed: "MX",
+    availableLanguage: ["Spanish", "es"],
+  },
+  openingHours: "Mo-Su 09:00-18:00",
+  sameAs: [
+    siteConfig.social.facebook,
+    siteConfig.social.instagram,
+    siteConfig.social.youtube,
+    siteConfig.social.whatsapp,
+  ],
+  areaServed: {
+    "@type": "Place",
+    name: "Guanajuato, México",
+  },
+  seeks: {
+    "@type": "Thing",
+    name: "Apoyo para niños con cáncer",
+  },
+  knowsAbout: [
+    "Cáncer infantil",
+    "Apoyo a niños",
+    "Cumplimiento de sueños",
+    "Organización sin fines de lucro",
+  ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteConfig.title,
+  url: siteConfig.baseURL,
+  description: description,
+  inLanguage: "es-MX",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteConfig.baseURL}/search?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Inicio",
+      item: siteConfig.baseURL,
+    },
+  ],
+};
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <!-- favicon -->
-    <link rel="shortcut icon" href={config.site.favicon} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{fullTitle}</title>
+    <meta name="title" content={fullTitle} />
+    <meta name="description" content={description} />
+    <meta name="author" content={siteConfig.author} />
+    <meta
+      name="keywords"
+      content="niños con cáncer, apoyo infantil, organización sin fines de lucro, ONG México, Celaya, Guanajuato, sueños niños, donaciones México, voluntariado, cáncer infantil, ayuda niños, fundación niños, viajes niños, fiestas infantiles"
+    />
+
+    <link rel="canonical" href={canonicalURL} />
+
+    <link rel="shortcut icon" href={siteConfig.favicon} />
+    <link rel="icon" type="image/png" sizes="32x32" href={siteConfig.favicon} />
+    <link rel="apple-touch-icon" href={siteConfig.favicon} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullImageURL} />
+    <meta property="og:site_name" content={siteConfig.title} />
+    <meta property="og:locale" content="es_MX" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={fullTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={fullImageURL} />
+
+    <meta name="geo.region" content="MX-GUA" />
+    <meta
+      name="geo.placename"
+      content={`${siteConfig.address.city}, ${siteConfig.address.state}`}
+    />
+    <meta
+      name="geo.position"
+      content={`${siteConfig.coordinates.lat};${siteConfig.coordinates.lng}`}
+    />
+    <meta
+      name="ICBM"
+      content={`${siteConfig.coordinates.lat}, ${siteConfig.coordinates.lng}`}
+    />
+
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {!noindex && <meta name="robots" content="index, follow" />}
+    <meta
+      name="googlebot"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+
+    <meta name="theme-color" content="#FF69B4" />
+    <meta name="msapplication-TileColor" content="#FF69B4" />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(organizationSchema)}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(websiteSchema)}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(breadcrumbSchema)}
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+
+    <link rel="alternate" hreflang="es-mx" href={canonicalURL} />
+    <link rel="alternate" hreflang="es" href={canonicalURL} />
 
     <ClientRouter />
   </head>
   <body class="flex flex-col items-center w-screen">
     <Header client:load />
-    <slot />
+    <main>
+      <slot />
+    </main>
     <BackToTopAstroButton />
-
     <Footer />
   </body>
 </html>
