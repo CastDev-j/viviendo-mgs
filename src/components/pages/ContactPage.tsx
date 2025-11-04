@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { siteConfig } from "@/config";
 
 export const ContactPage = () => {
   const [formStatus, setFormStatus] = useState("");
@@ -104,25 +105,24 @@ export const ContactPage = () => {
               </p>
 
               <p className="text-gray-600 text-center">
-                Calle Capiro #116, Fracc. Xochipilli, Colonia Laureles 1ra
-                sección 38020 Celaya, México
+                {siteConfig.address.fullAddress}
               </p>
 
               <p>
                 <a
-                  href="mailto:viviendo.mgsueno@gmail.com"
+                  href={`mailto:${siteConfig.contact.email}`}
                   className="text-gray-600 hover:text-primary transition-colors"
                 >
-                  viviendo.mgsueno@gmail.com
+                  {siteConfig.contact.email}
                 </a>
               </p>
 
               <p>
                 <a
-                  href="tel:+524611169054"
+                  href={`tel:${siteConfig.contact.phone}`}
                   className="text-gray-600 hover:text-primary transition-colors"
                 >
-                  +52 (461) 116 9054
+                  {siteConfig.contact.phoneFormatted}
                 </a>
               </p>
             </div>
@@ -135,33 +135,39 @@ export const ContactPage = () => {
 
               <div className="flex justify-center items-center gap-4 mt-4">
                 <a
-                  href="https://www.facebook.com/profile.php?id=100052241268987"
+                  href={siteConfig.social.facebook.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group text-primary hover:text-secondary transition-all duration-300 p-4 rounded-lg flex flex-col items-center hover:bg-primary/5"
                 >
                   <FaFacebook className="text-4xl mb-2" />
-                  <span className="text-sm font-medium">Facebook</span>
+                  <span className="text-sm font-medium">
+                    {siteConfig.social.facebook.name}
+                  </span>
                 </a>
 
                 <a
-                  href="https://www.instagram.com/viviendo_migransueno/"
+                  href={siteConfig.social.instagram.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group text-primary hover:text-secondary transition-all duration-300 p-4 rounded-lg flex flex-col items-center hover:bg-primary/5"
                 >
                   <FaInstagram className="text-4xl mb-2" />
-                  <span className="text-sm font-medium">Instagram</span>
+                  <span className="text-sm font-medium">
+                    {siteConfig.social.instagram.name}
+                  </span>
                 </a>
 
                 <a
-                  href="https://www.youtube.com/@viviendomigransueno1307"
+                  href={siteConfig.social.youtube.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group text-primary hover:text-secondary transition-all duration-300 p-4 rounded-lg flex flex-col items-center hover:bg-primary/5"
                 >
                   <FaYoutube className="text-4xl mb-2" />
-                  <span className="text-sm font-medium">YouTube</span>
+                  <span className="text-sm font-medium">
+                    {siteConfig.social.youtube.name}
+                  </span>
                 </a>
               </div>
             </div>
@@ -177,7 +183,7 @@ export const ContactPage = () => {
               <input
                 type="hidden"
                 name="access_key"
-                value="b633ab9f-5801-4fd8-bf1b-0daa5aff2433"
+                value={siteConfig.api.web3forms}
               />
               <input
                 type="checkbox"

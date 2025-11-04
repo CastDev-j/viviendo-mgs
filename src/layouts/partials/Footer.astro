@@ -2,6 +2,7 @@
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { FaClock, FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
+import { siteConfig } from "@/config";
 ---
 
 <footer
@@ -49,7 +50,7 @@ import { FaLocationDot } from "react-icons/fa6";
 
             <div class="space-y-6">
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=20.5351%2C-100.83131"
+                href={siteConfig.address.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="group flex items-start gap-4 p-4 rounded-xl hover:bg-primary/5 transition-all duration-300"
@@ -66,15 +67,18 @@ import { FaLocationDot } from "react-icons/fa6";
                   <p
                     class="text-neutral-600 text-sm md:text-base leading-relaxed"
                   >
-                    Calle Capiro #116, Fracc. Xochipilli,<br />
-                    Colonia Laureles 1ra sección<br />
-                    38020 Celaya, México
+                    {siteConfig.address.street}, {
+                      siteConfig.address.neighborhood
+                    },<br />
+                    {siteConfig.address.colony}<br />
+                    {siteConfig.address.postalCode}
+                    {siteConfig.address.city}, {siteConfig.address.country}
                   </p>
                 </div>
               </a>
 
               <a
-                href="tel:4611169054"
+                href={`tel:${siteConfig.contact.phone}`}
                 class="group flex items-center gap-4 p-4 rounded-xl hover:bg-primary/5 transition-all duration-300"
               >
                 <div
@@ -86,7 +90,9 @@ import { FaLocationDot } from "react-icons/fa6";
                 </div>
                 <div class="flex-1">
                   <p class="font-semibold text-neutral-800 mb-1">Teléfono</p>
-                  <p class="text-neutral-600 text-lg">461 116 9054</p>
+                  <p class="text-neutral-600 text-lg">
+                    {siteConfig.contact.phoneDisplay}
+                  </p>
                 </div>
               </a>
 
@@ -98,8 +104,12 @@ import { FaLocationDot } from "react-icons/fa6";
                 </div>
                 <div class="flex-1">
                   <p class="font-semibold text-neutral-800 mb-1">Horario</p>
-                  <p class="text-neutral-600">Lunes a Domingo</p>
-                  <p class="text-neutral-600 font-medium">9:00 - 18:00 hrs</p>
+                  <p class="text-neutral-600">
+                    {siteConfig.businessHours.days}
+                  </p>
+                  <p class="text-neutral-600 font-medium">
+                    {siteConfig.businessHours.hours}
+                  </p>
                 </div>
               </div>
             </div>
@@ -124,7 +134,8 @@ import { FaLocationDot } from "react-icons/fa6";
             <div class="mt-6 pt-6 border-t border-primary/20">
               <p class="text-center text-sm text-neutral-500">
                 Comparte tu experiencia con <span
-                  class="font-semibold text-primary">#ViviendoMigransueño</span
+                  class="font-semibold text-primary"
+                  >{siteConfig.hashtags.main}</span
                 >
               </p>
             </div>
@@ -137,12 +148,13 @@ import { FaLocationDot } from "react-icons/fa6";
           class="flex flex-col md:flex-row items-center justify-between gap-4"
         >
           <p class="text-sm text-neutral-600 text-center md:text-left">
-            &copy; {new Date().getFullYear()} Viviendo Migransueño. Todos los derechos
-            reservados.
+            &copy; {new Date().getFullYear()}
+            {siteConfig.name}. Todos los derechos reservados.
           </p>
           <p class="text-sm text-neutral-500 text-center md:text-right">
-            Desarrollo: <span class="font-semibold text-primary"
-              >Andrés Castillo</span
+            {siteConfig.developer.role}: <span
+              class="font-semibold text-primary"
+              >{siteConfig.developer.name}</span
             >
           </p>
         </div>
