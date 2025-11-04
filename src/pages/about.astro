@@ -1,0 +1,270 @@
+---
+import { FadeUpContainer } from "@/components/FadeUpContainer";
+import { BiSolidParty } from "react-icons/bi";
+import { GiClothes } from "react-icons/gi";
+import { FaBus, FaStar } from "react-icons/fa";
+import { MdSmartToy } from "react-icons/md";
+import { FadeAnimation } from "@/components/FadeAnimation";
+import Base from "@/layouts/Base.astro";
+import { CarouselComponent } from "@/components/Carousel";
+import Timeline from "@/components/Timeline.astro";
+---
+
+<Base>
+  <section class="section">
+    <div class="container flex justify-center items-center">
+      <div class="flex flex-col gap-6 w-full text-center p-6 max-w-3xl">
+        <h2>
+          <FadeUpContainer client:visible>
+            <span class="text-primary"> ¿Quiénes </span>
+            <span class="text-secondary"> somos?</span>
+          </FadeUpContainer>
+        </h2>
+
+        <div class="p-2 rounded-xl">
+          <FadeUpContainer client:visible>
+            <p>
+              <p>
+                <strong>Viviendo mi gran sueño A.C</strong> nació de nuestro interés
+                en ayudar a las personas menores de edad, que padecen <strong
+                  >Cáncer</strong
+                >, donde su estado de salud es crítico. Nuestros objetivos e
+                inspiración nos convierten en una asociación que nos
+                enorgullece.
+              </p>
+
+              <br />
+
+              <p>
+                Apoyamos a los <strong>niños y niñas</strong> que padecen <strong
+                  >Cáncer</strong
+                >, de escasos recursos a través de servicios gratuitos como:
+              </p>
+            </p>
+          </FadeUpContainer>
+        </div>
+
+        <!-- Algunos de los sueños que cumplimos -->
+
+        <div class="flex flex-wrap justify-center sm:gap-x-24 gap-3 mt-6">
+          <FadeAnimation client:visible>
+            <div
+              class="p-2 bg-white rounded-lg flex flex-col gap-3 justify-center items-center text-secondary min-h-36"
+            >
+              <FaBus className="text-4xl" />
+              <h3 class="text-lg font-bold mb-2 min-w-36 text-secondary">
+                <p>Viajes</p>
+                <p>Nacionales</p>
+              </h3>
+            </div>
+          </FadeAnimation>
+
+          <FadeAnimation client:visible>
+            <div
+              class="p-2 bg-white rounded-lg flex flex-col gap-3 justify-center items-center text-primary min-h-36"
+            >
+              <BiSolidParty className="text-4xl" />
+              <h3 class="text-lg font-bold mb-2 min-w-36 text-primary">
+                Fiestas
+              </h3>
+            </div>
+          </FadeAnimation>
+
+          <FadeAnimation client:visible>
+            <div
+              class="p-2 bg-white rounded-lg flex flex-col gap-3 justify-center items-center text-secondary min-h-36"
+            >
+              <FaStar className="text-4xl" />
+              <h3 class="text-lg font-bold mb-2 min-w-36 text-secondary">
+                <p>Conocer a</p>
+                <p>Algún Idolo</p>
+              </h3>
+            </div>
+          </FadeAnimation>
+
+          <FadeAnimation client:visible>
+            <div
+              class="p-2 bg-white rounded-lg flex flex-col gap-3 justify-center items-center text-primary min-h-36"
+            >
+              <MdSmartToy className="text-4xl" />
+              <h3 class="text-lg font-bold mb-2 min-w-36 text-primary">
+                <p>Juguetes</p>
+                <p>Anhelados</p>
+              </h3>
+            </div>
+          </FadeAnimation>
+
+          <FadeAnimation client:visible>
+            <div
+              class="p-2 bg-white rounded-lg flex flex-col gap-3 justify-center items-center text-secondary min-h-36"
+            >
+              <GiClothes className="text-4xl" />
+              <h3 class="text-lg font-bold mb-2 min-w-36 text-secondary">
+                <p>Cambio de</p>
+                <p>Guardaropa</p>
+              </h3>
+            </div>
+          </FadeAnimation>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div
+        class="flex flex-col gap-6 w-full text-center p-6 max-w-3xl bg-theme-light/30 rounded-xl"
+      >
+        <h3>
+          <FadeUpContainer client:visible>
+            <span class="text-primary"> ¿Cuál es Nuestra </span>
+            <span class="text-primary"> Misión?</span>
+          </FadeUpContainer>
+        </h3>
+
+        <div class="p-2 rounded-xl">
+          <FadeUpContainer client:visible>
+            <p>
+              Nuestra misión es cumplir los sueños de los <strong
+                >niños y niñas</strong
+              > que padecen <strong>Cáncer</strong>, de escasos recursos, a
+              través de servicios gratuitos como: <strong
+                >viajes nacionales</strong
+              >, <strong>fiestas</strong>, <strong>conocer a algún ídolo</strong
+              >, <strong>juguetes anhelados</strong> y <strong
+                >cambio de guardarropa</strong
+              >.
+            </p>
+          </FadeUpContainer>
+        </div>
+      </div>
+      <div
+        class="flex flex-col gap-6 w-full text-center p-6 max-w-3xl bg-[#e3f1fb] rounded-xl"
+      >
+        <h3>
+          <FadeUpContainer client:visible>
+            <span class="text-secondary"> ¿Cuál es Nuestra </span>
+            <span class="text-secondary"> Visión?</span>
+          </FadeUpContainer>
+        </h3>
+
+        <div class="p-2 rounded-xl">
+          <FadeUpContainer client:visible>
+            <p>
+              Ser la Asociación que cumpla con la mayoría de los <strong
+                >sueños</strong
+              > de las personas que se encuentran en el proceso de esta <strong
+                >enfermedad</strong
+              >, logrando establecer más <strong>centros de atención</strong> de
+              la Asociación Viviendo mi gran sueño en el <strong
+                >Estado de Guanajuato</strong
+              >, así como en otros <strong
+                >estados de la República Mexicana</strong
+              >, y claro de ser posible, crecer a nivel de otros <strong
+                >países del mundo</strong
+              >.
+            </p>
+          </FadeUpContainer>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr
+    class="border-2 border-secondary border-opacity-20 mt-12 mb-12 mx-auto w-1/2"
+  />
+
+  <section class="section">
+    <div class="container grid grid-cols-1 md:grid-cols-2 gap-6">
+      <h2 class="flex col-span-2 justify-center text-center items-center mb-6">
+        <FadeUpContainer client:visible>
+          <span class="text-primary"> Algunos de los </span>
+          <span class="text-secondary"> sueños que cumplimos</span>
+        </FadeUpContainer>
+      </h2>
+
+      <div
+        class="flex flex-col gap-6 w-full text-center p-6 max-w-3xl rounded-xl col-span-2 sm:col-span-1"
+      >
+        <h3>
+          <FadeUpContainer client:visible>
+            <span class="text-primary"> Información </span>
+          </FadeUpContainer>
+        </h3>
+
+        <div class="p-2 rounded-xl gap-12 flex flex-col">
+          <FadeUpContainer client:visible>
+            <p>
+              <p>
+                En esta pequeña galería de imágenes, podrás ver algunos de los
+                <strong>sueños</strong> que hemos cumplido a lo largo de nuestra
+                trayectoria.
+              </p>
+
+              <br />
+
+              <p>
+                Todos estos <strong>sueños</strong> no serían posibles sin la ayuda
+                de nuestros <strong>donadores</strong> y
+                <strong>voluntarios</strong>.
+              </p>
+
+              <br />
+
+              <p>
+                Puedes ver más de nuestros <strong>sueños cumplidos</strong> en nuestras
+                <strong>redes sociales</strong>.
+              </p>
+            </p>
+          </FadeUpContainer>
+
+          <FadeUpContainer client:visible>
+            <a
+              rel="noopener"
+              target="_blank"
+              class="inline-flex items-center justify-center px-6 py-3 font-semibold text-base text-white bg-primary rounded-full transition-all ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+              href="https://www.facebook.com/profile.php?id=100052241268987&sk=photos&locale=es_LA"
+              >Visita nuestro Facebook</a
+            >
+          </FadeUpContainer>
+        </div>
+      </div>
+      <div
+        class="flex flex-col gap-6 w-full text-center max-w-3xl rounded-xl p-6 col-span-2 sm:col-span-1"
+      >
+        <div class="flex flex-col gap-6 w-full text-center">
+          <h3>
+            <FadeUpContainer client:visible>
+              <span class="text-secondary"> Galería </span>
+            </FadeUpContainer>
+          </h3>
+
+          <div class="p-2 rounded-xl">
+            <FadeUpContainer client:visible>
+              <CarouselComponent client:visible />
+            </FadeUpContainer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr
+    class="border-2 border-secondary border-opacity-20 mt-12 mb-12 mx-auto w-1/2"
+  />
+
+  <section class="section">
+    <div class="container flex flex-col gap-6">
+      <h2 class="text-center col-span-2 mb-12">
+        <FadeUpContainer client:visible>
+          <span class="text-primary"> Conoce Nuestra </span>
+          <span class="text-secondary"> Historia</span>
+        </FadeUpContainer>
+      </h2>
+
+      <div class="container max-w-4xl">
+        <Timeline />
+      </div>
+    </div>
+  </section>
+</Base>

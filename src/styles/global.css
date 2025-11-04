@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #E94D64;
+    --color-secondary: #20a0d7;
+    --color-accent: #c0e5f7;
+    --color-body: #FFFFFF;
+    --color-border: #e9e9e9;
+    --color-theme-light: #F4CCD2;
+
+    --text-default: #555555;
+    --text-dark: #222222;
+
+    --font-primary: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-primary-type: sans-serif;
+
+    --font-size-base: 16px;
+    --font-scale: 1.25;
+}

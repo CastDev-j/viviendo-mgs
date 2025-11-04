@@ -1,0 +1,27 @@
+{
+  "main": [
+    {
+      "name": "INICIO",
+      "url": "/"
+    },
+    {
+      "name": "¿QUIÉNES SOMOS?",
+      "url": "/about"
+    },
+    {
+      "name": "¿QUIERES CONTACTARNOS?",
+      "url": "/contact"
+    }
+  ],
+  "footer": [
+    {
+      "name": "Dirección",
+      "data": {
+        "placeName": "Oficina Central",
+        "streetAddress": "Calle Capiro #116, Fracc. Xochipilli, Colonia Laureles 1ra sección 38020 Celaya, Mexico",
+        "phone": "461 116 9054",
+        "schedule": "Lunes a Viernes de 9:00 a 18:00"
+      }
+    }
+  ]
+}

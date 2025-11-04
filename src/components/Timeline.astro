@@ -1,0 +1,92 @@
+---
+import { FaLightbulb, FaBoxOpen, FaExternalLinkAlt } from "react-icons/fa";
+import { GiNewBorn } from "react-icons/gi";
+import { FadeUpContainer } from "./FadeUpContainer";
+
+interface Timeline {
+  title: string;
+  date: string;
+  description: string;
+  link?: {
+    url: string;
+    text: string;
+  };
+  icon: any;
+}
+
+const dates: Timeline[] = [
+  {
+    title: "Fecha de creación de Viviendo Migransueño A.C",
+    date: "octubre 11, 2018",
+    description:
+      "Viviendo mi gran sueño A.C nació de nuestro interés en ayudar a las personas menores de edad, que padecen Cáncer, donde su estado de salud es crítico. Nuestros objetivos e inspiración nos convierten en una asociación que nos enorgullece.",
+    icon: FaLightbulb,
+  },
+  {
+    title: "Lorem ipsum dolor sit amet",
+    date: "marzo 07, 2025",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
+    icon: FaBoxOpen,
+  },
+  {
+    title: "Lorem ipsum dolor sit amet",
+    date: "marzo 07, 2025",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
+    icon: FaBoxOpen,
+  },
+  {
+    title: "Lorem ipsum dolor sit amet",
+    date: "marzo 07, 2025",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
+    icon: FaBoxOpen,
+    link: {
+      url: "/",
+      text: "Ejemplo de enlace",
+    },
+  },
+];
+---
+
+<ol class="relative border-s border-gray-200">
+  {
+    dates.map((event, index) => (
+      <li class="mb-10 ms-6">
+        <span class="absolute flex items-center justify-center w-6 h-6 bg-theme-light/30 text-primary rounded-full -start-3 ring-8 ring-white">
+          <event.icon class="w-2.5 h-2.5 text-primary-800" aria-hidden="true" />
+        </span>
+        <FadeUpContainer client:visible>
+          <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900">
+            {event.title}{" "}
+            {index === dates.length - 1 && (
+              <span class="bg-theme-light/30 text-primary text-primary-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm ms-3">
+                Última Actualización
+              </span>
+            )}
+          </h3>
+        </FadeUpContainer>
+        <FadeUpContainer client:visible>
+          <time class="block mb-2 text-sm font-normal leading-none text-gray-400">
+            {event.date}
+          </time>
+        </FadeUpContainer>
+        <FadeUpContainer client:visible>
+          <p class="mb-4 text-base font-normal text-gray-500">
+            {event.description}
+          </p>
+        </FadeUpContainer>
+        {event.link && (
+          <a
+            href={event.link.url}
+            class="inline-flex gap-2 items-center px-4 py-2 text-sm font-semibold text-primary bg-white border border-primary rounded-lg hover:border-secondary hover:text-secondary "
+          >
+            <FaExternalLinkAlt />
+            {event.link.text}
+          </a>
+        )}
+      </li>
+    ))
+  }
+</ol>

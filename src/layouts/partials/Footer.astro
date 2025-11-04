@@ -1,0 +1,113 @@
+---
+import Social from "@/components/Social.astro";
+import config from "@/config/config.json";
+import menu from "@/config/menu.json";
+import social from "@/config/social.json";
+import { FaClock, FaPhoneAlt } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
+
+const { footer_content, copyright } = config.params;
+---
+
+<footer
+  style="border-radius: 52% 47% 25% 25% / 4% 4% 0% 0%;"
+  class="section bg-theme-light/30 pb-0"
+>
+  <div class="container">
+    <div
+      class="flex flex-col items-center justify-center py-12 border-b-2 mb-6 border-primary"
+    >
+      {/* logo */}
+      <a
+        href="/"
+        class="order-0 items-center text-2xl sm:justify-center flex py-2 px-4 border-4 border-white bg-white rounded-full mb-6"
+      >
+        <img src="/images/logo.png" alt="logo" class="h-24" />
+      </a>
+
+      <p
+        class="text-center text-3xl text-primary font-bold mb-4 tracking-wider"
+      >
+        VISÍTANOS
+      </p>
+
+      <a href="" class="text-center text-xl text-primary px-6 tracking-tighter">
+        AVISO DE PRIVACIDAD
+      </a>
+    </div>
+
+    <div class="container flex flex-col gap-6">
+      {/* footer menu */}
+
+      <div class="row flex justify-between">
+        {
+          menu.footer.map((col) => {
+            return (
+              <div class="mb-12 sm:col-6 lg:col-6">
+                <ul class="mt-6">
+                  {(col: any) => (
+                    <li class="mb-1 flex flex-col gap-2 justify-center items-center text-center bg-transparent p-4 rounded-lg ">
+                      <h4 class="text-primary font-semibold mb-4">
+                        {/* titulo para  */}
+                        Oficina de Viviendo Migransueño
+                      </h4>
+
+                      <a
+                        href="https://www.google.com/maps/dir/?api=1&destination=20.5351%2C-100.83131"
+                        class="flex flex-col gap-2 items-center"
+                      >
+                        <FaLocationDot className="text-primary" />
+                        <span class="block text-neutral-700">
+                          Calle Capiro #116, Fracc. Xochipilli, Colonia Laureles
+                          1ra sección 38020 Celaya, Mexico
+                        </span>
+                      </a>
+
+                      <div class="w-full border-t border-primary my-2" />
+
+                      <a
+                        href="tel:4611169054"
+                        class="flex flex-col gap-2 items-center"
+                      >
+                        <FaPhoneAlt className="text-primary" />
+                        <span class="block text-neutral-700">461 116 9054</span>
+                      </a>
+
+                      <div class="w-full border-t border-primary my-2" />
+
+                      <FaClock className="text-primary" />
+                      <span class="block text-neutral-700">
+                        Lunes a Domingo de 9:00 a 18:00 hrs
+                      </span>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            );
+          })
+        }
+        {/* social icons */}
+        <div class="md-12 sm:col-6 lg:col-3">
+          <article class="mt-6">
+            <section
+              class="mb-1 flex flex-col gap-2 justify-center items-center text-center bg-transparent p-4 rounded-lg"
+            >
+              <h4 class="text-primary font-semibold">SIGUENOS</h4>
+              <p></p>
+
+              <div class="w-full border-t border-primary my-2"></div>
+
+              <Social source={social} className="social-icons mb-8" />
+            </section>
+          </article>
+        </div>
+      </div>
+      {/* copyright */}
+      <div class="border-t border-primary py-6">
+        <p class="text-sm text-center">
+          &copy; {new Date().getFullYear()}
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

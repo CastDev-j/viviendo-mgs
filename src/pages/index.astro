@@ -1,16 +1,321 @@
 ---
+import Base from "@/layouts/Base.astro";
+import { getEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { TestContainer } from "@/components/TestContainer";
+import { LuHeartHandshake } from "react-icons/lu";
+import { MdEvent } from "react-icons/md";
+import { FadeAnimation } from "@/components/FadeAnimation";
+import { FaFacebook, FaPlayCircle } from "react-icons/fa";
+import { FadeUpContainer } from "@/components/FadeUpContainer";
 
+const homepage = (await getEntry(
+  "homepage",
+  "-index"
+)) as CollectionEntry<"homepage">;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base>
+  <article class="animate-fade">
+    <FadeAnimation client:visible>
+      <TestContainer client:visible type="primary">
+        <div class="container px-12">
+          <div class="row text-center">
+            <div class="mx-auto lg:col-10">
+              <h1 class="font-primary text-primary text-4xl font-semibold">
+                Viviendo mi gran sueño A.C
+              </h1>
+
+              <p class="mt-6 text-lg">"Vivir para servir"</p>
+            </div>
+          </div>
+        </div>
+      </TestContainer>
+    </FadeAnimation>
+
+    <section class="section mt-42">
+      <FadeUpContainer client:visible>
+        <div class="container">
+          <div class="row text-center">
+            <div class="mx-auto lg:col-10">
+              <h1 class="font-primary mb-24 text-4xl font-semibold">
+                <span class="text-secondary">Tu apoyo hace</span>
+                <span class="text-primary">la diferencia</span>
+              </h1>
+              <div
+                class="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3"
+              >
+                <FadeAnimation client:visible>
+                  <div
+                    class="feature-card rounded-xl py-5 px-6 pb-8 text-center flex flex-col items-center bg-transparent text-xl text-primary"
+                  >
+                    <MdEvent className="size-12 mb-6" />
+                    <h5
+                      class="mb-2 text-2xl font-semibold tracking-tight text-primary dark:text-white"
+                    >
+                      Eventos
+                    </h5>
+                    <p
+                      class="mb-3 font-normal text-neutral-500 dark:text-neutral-400"
+                    >
+                      Participa en nuestros eventos y conoce más sobre nuestra
+                      labor
+                    </p>
+                    <a
+                      href="https://www.facebook.com/profile.php?id=100052241268987&sk=events&locale=es_LA"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex font-medium items-center text-primary hover:underline"
+                    >
+                      Ver más
+                      <svg
+                        class="w-3 h-3 ms-2.5 rtl:rotate-270"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 18 18"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"
+                        ></path>
+                      </svg>
+                    </a>
+                  </div>
+                </FadeAnimation>
+                <FadeAnimation client:visible>
+                  <div
+                    class="feature-card rounded-xl py-5 px-6 pb-8 text-center flex flex-col items-center bg-transparent text-xl text-secondary"
+                  >
+                    <LuHeartHandshake className="size-12 mb-6" />
+                    <h5
+                      class="mb-2 text-2xl font-semibold tracking-tight text-secondary dark:text-white"
+                    >
+                      ¿Te gustaría ayudar?
+                    </h5>
+                    <p
+                      class="mb-3 font-normal text-neutral-500 dark:text-neutral-400"
+                    >
+                      Conoce cómo puedes ayudar a nuestra causa y ser parte de
+                      este gran sueño
+                    </p>
+                    <a
+                      href="/contact"
+                      class="inline-flex font-medium items-center text- hover:underline"
+                    >
+                      Ver más
+                      <svg
+                        class="w-3 h-3 ms-2.5 rtl:rotate-270"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 18 18"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"
+                        ></path>
+                      </svg>
+                    </a>
+                  </div>
+                </FadeAnimation>
+                <FadeAnimation client:visible>
+                  <div
+                    class="feature-card rounded-xl py-5 px-6 pb-8 text-center flex flex-col items-center bg-transparent text-xl text-primary"
+                  >
+                    <FaFacebook className="size-12 mb-6" />
+                    <h5
+                      class="mb-2 text-2xl font-semibold tracking-tight text-primary dark:text-white"
+                    >
+                      Visita nuestro facebook
+                    </h5>
+                    <p
+                      class="mb-3 font-normal text-neutral-500 dark:text-neutral-400"
+                    >
+                      Conoce más sobre nuestra labor y eventos en nuestra página
+                      de facebook
+                    </p>
+                    <a
+                      href="https://www.facebook.com/profile.php?id=100052241268987&sk=events&locale=es_LA"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex font-medium items-center text-primary hover:underline"
+                    >
+                      Ver más
+                      <svg
+                        class="w-3 h-3 ms-2.5 rtl:rotate-270"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 18 18"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"
+                        ></path>
+                      </svg>
+                    </a>
+                  </div>
+                </FadeAnimation>
+              </div>
+            </div>
+          </div>
+        </div>
+      </FadeUpContainer>
+    </section>
+
+    <hr
+      class="border-2 border-secondary border-opacity-20 mt-12 mb-12 mx-auto w-1/2"
+    />
+
+    <section class="section">
+      <section>
+        <div class="container">
+          <div
+            class="mt-8 grid gap-x-8 lg:gap-y-6 gap-24 grid-cols-2 lg:grid-cols-3 w-full items-center"
+          >
+            <div class="flex flex-col gap-8 col-span-2 w-full text-center">
+              <FadeUpContainer client:visible>
+                <h2>
+                  <span class="text-primary">¿Cómo</span>
+                  <span class="text-secondary">nace?</span>
+                </h2>
+              </FadeUpContainer>
+              <FadeUpContainer client:visible>
+                <div class="flex flex-col gap-6 text-center">
+                  <p>
+                    Viviendo mi gran sueño A.C nació de nuestro interés en
+                    ayudar a las personas menores de edad, que padecen Cáncer,
+                    donde su estado de salud es crítico.
+                  </p>
+                  <p>
+                    Nuestros objetivos e inspiración nos convierten en una
+                    asociación que nos enorgullece.
+                  </p>
+                  <p>
+                    Nos esforzamos constantemente para que los pequeños
+                    soñadores reciban aquello que tanto anhelan y desean con
+                    vehemencia.
+                  </p>
+                </div>
+              </FadeUpContainer>
+
+              <FadeUpContainer client:visible>
+                <a
+                  class="inline-flex items-center justify-center px-6 py-3 font-semibold text-base text-white bg-primary rounded-full transition-all ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+                  href="/about">Conoce más sobre nosotros</a
+                >
+              </FadeUpContainer>
+            </div>
+
+            <div
+              class="flex flex-col content-center items-center justify-center col-span-2 lg:col-span-1 w-full p-6 gap-1 rounded-xl"
+            >
+              <FadeUpContainer client:visible>
+                <p
+                  class="text-primary font-semibold text-lg mb-5 tracking-[0.015rem]"
+                >
+                  CUANDO LAS COSAS SE HACEN DE
+                </p>
+              </FadeUpContainer>
+              <FadeUpContainer client:visible>
+                <p
+                  class="text-secondary font-semibold text-[3.75rem] leading-none tracking-[0.015rem]"
+                >
+                  CORAZÓN
+                </p>
+                <p
+                  class="text-primary font-semibold text-[1.9rem] leading-none tracking-[0.175rem]"
+                >
+                  TODO ES POSIBLE
+                </p>
+                <p
+                  class="text-secondary font-semibold text-[3rem] leading-none tracking-[0.09275rem]"
+                >
+                  LOS SUEÑOS
+                </p>
+                <p
+                  class="text-primary font-semibold text-[1.9rem] leading-none tracking-[0.07275rem]"
+                >
+                  SE CONVIERTEN EN
+                </p>
+                <p
+                  class="text-secondary font-semibold text-5xl leading-none tracking-[0.5rem]"
+                >
+                  REALIDAD
+                </p>
+              </FadeUpContainer>
+              <FadeUpContainer client:visible>
+                <div
+                  class="order-0 items-center text-2xl justify-center flex p-4"
+                >
+                  <img
+                    src="/images/identidad.png"
+                    alt="identidad"
+                    class="w-full max-w-sm"
+                  />
+                </div>
+              </FadeUpContainer>
+              <FadeUpContainer client:visible>
+                <p
+                  class="text-secondary font-light text-[3rem] leading-none tracking-normal -mt-8"
+                >
+                  viviendo
+                </p>
+                <p
+                  class="font-light text-[3rem] leading-none tracking-[0.25rem] -mt-3"
+                >
+                  <span class="text-secondary">mi</span>
+                  <span class="text-primary">gran</span>
+                </p>
+                <p
+                  class="text-primary font-light text-[3.75rem] leading-none tracking-[0.3rem] -mt-3"
+                >
+                  sueño
+                </p>
+              </FadeUpContainer>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <hr
+      class="border-2 border-secondary border-opacity-20 mt-12 mb-12 mx-auto w-1/2"
+    />
+
+    <section class="section">
+      <FadeUpContainer client:visible>
+        <div class="container flex justify-center items-center">
+          <div class="flex flex-col gap-6 w-full text-center p-6 max-w-3xl">
+            <h2>
+              <span class="text-primary"> ¿Que hace Viviendo</span>
+              <span class="text-secondary"> Migransueño A.C?</span>
+            </h2>
+
+            <div class="p-2 rounded-xl">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex gap-6 items-center justify-center px-24 py-3 font-semibold text-base text-white bg-primary rounded-full transition-all ease-in-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+                href="https://www.youtube.com/watch?v=ugMuhP73IbI"
+              >
+                <span> Ver video </span>
+                <FaPlayCircle className="text-lg" /></a
+              >
+            </div>
+          </div>
+        </div>
+      </FadeUpContainer>
+    </section>
+  </article>
+</Base>
