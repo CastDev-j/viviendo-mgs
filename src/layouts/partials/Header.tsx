@@ -1,3 +1,4 @@
+import { siteConfig } from "@/config";
 import { cn } from "@/lib/cn";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -200,7 +201,7 @@ const Header: React.FC = () => {
 
           <div className="flex gap-6">
             <a
-              href="https://facebook.com"
+              href={siteConfig.social.facebook.url}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-secondary hover:text-neutral-950 cursor-pointer transition-colors p-2"
