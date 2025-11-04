@@ -16,7 +16,7 @@ const homepage = (await getEntry(
 ---
 
 <Base>
-  <article class="animate-fade">
+  <article class="animate-fade flex flex-col gap-12">
     <FadeAnimation client:visible>
       <TestContainer client:visible type="primary">
         <div class="container px-12">
@@ -33,7 +33,7 @@ const homepage = (await getEntry(
       </TestContainer>
     </FadeAnimation>
 
-    <section class="section mt-42">
+    <section class="section mt-24">
       <FadeUpContainer client:visible>
         <div class="container">
           <div class="row text-center">
@@ -51,13 +51,11 @@ const homepage = (await getEntry(
                   >
                     <MdEvent className="size-12 mb-6" />
                     <h5
-                      class="mb-2 text-2xl font-semibold tracking-tight text-primary dark:text-white"
+                      class="mb-2 text-2xl font-semibold tracking-tight text-primary"
                     >
                       Eventos
                     </h5>
-                    <p
-                      class="mb-3 font-normal text-neutral-500 dark:text-neutral-400"
-                    >
+                    <p class="mb-3 font-normal text-neutral-500">
                       Participa en nuestros eventos y conoce más sobre nuestra
                       labor
                     </p>
@@ -92,13 +90,11 @@ const homepage = (await getEntry(
                   >
                     <LuHeartHandshake className="size-12 mb-6" />
                     <h5
-                      class="mb-2 text-2xl font-semibold tracking-tight text-secondary dark:text-white"
+                      class="mb-2 text-2xl font-semibold tracking-tight text-secondary"
                     >
                       ¿Te gustaría ayudar?
                     </h5>
-                    <p
-                      class="mb-3 font-normal text-neutral-500 dark:text-neutral-400"
-                    >
+                    <p class="mb-3 font-normal text-neutral-500">
                       Conoce cómo puedes ayudar a nuestra causa y ser parte de
                       este gran sueño
                     </p>
@@ -131,13 +127,11 @@ const homepage = (await getEntry(
                   >
                     <FaFacebook className="size-12 mb-6" />
                     <h5
-                      class="mb-2 text-2xl font-semibold tracking-tight text-primary dark:text-white"
+                      class="mb-2 text-2xl font-semibold tracking-tight text-primary"
                     >
                       Visita nuestro facebook
                     </h5>
-                    <p
-                      class="mb-3 font-normal text-neutral-500 dark:text-neutral-400"
-                    >
+                    <p class="mb-3 font-normal text-neutral-500">
                       Conoce más sobre nuestra labor y eventos en nuestra página
                       de facebook
                     </p>
@@ -174,7 +168,7 @@ const homepage = (await getEntry(
     </section>
 
     <hr
-      class="border-2 border-secondary border-opacity-20 mt-12 mb-12 mx-auto w-1/2"
+      class="border-2 border-secondary/30 border-opacity-20 mt-12 mb-12 mx-auto w-1/2"
     />
 
     <section class="section">
@@ -185,13 +179,13 @@ const homepage = (await getEntry(
           >
             <div class="flex flex-col gap-8 col-span-2 w-full text-center">
               <FadeUpContainer client:visible>
-                <h2>
+                <h2 class="text-3xl font-semibold">
                   <span class="text-primary">¿Cómo</span>
                   <span class="text-secondary">nace?</span>
                 </h2>
               </FadeUpContainer>
               <FadeUpContainer client:visible>
-                <div class="flex flex-col gap-6 text-center">
+                <div class="flex flex-col gap-6 text-center px-6">
                   <p>
                     Viviendo mi gran sueño A.C nació de nuestro interés en
                     ayudar a las personas menores de edad, que padecen Cáncer,
@@ -290,14 +284,14 @@ const homepage = (await getEntry(
     </section>
 
     <hr
-      class="border-2 border-secondary border-opacity-20 mt-12 mb-12 mx-auto w-1/2"
+      class="border-2 border-secondary/30 border-opacity-20 mt-12 mb-12 mx-auto w-1/2"
     />
 
-    <section class="section">
+    <section class="mb-24">
       <FadeUpContainer client:visible>
         <div class="container flex justify-center items-center">
           <div class="flex flex-col gap-6 w-full text-center p-6 max-w-3xl">
-            <h2>
+            <h2 class="text-3xl font-semibold">
               <span class="text-primary"> ¿Que hace Viviendo</span>
               <span class="text-secondary"> Migransueño A.C?</span>
             </h2>

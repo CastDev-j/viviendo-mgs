@@ -12,11 +12,15 @@ export const TestContainer: FC<TestContainerProps> = ({ children, type }) => {
   useGSAP(
     () => {
       if (!root.current) return;
-      gsap.fromTo(
-        root.current,
-        { autoAlpha: 0, y: 24 },
-        { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out" }
-      );
+
+      gsap.set(root.current, { autoAlpha: 0, y: 24 });
+
+      gsap.to(root.current, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      });
     },
     { dependencies: [type], scope: root }
   );
@@ -25,6 +29,11 @@ export const TestContainer: FC<TestContainerProps> = ({ children, type }) => {
     <section
       ref={root}
       className="rounded-[50%_50%_50%_50%/0%_0%_9%_10%] bg-[url('/images/hero-bg.avif')] bg-cover bg-center flex items-center justify-center w-full h-full overflow-hidden"
+      style={{
+        opacity: 0,
+        visibility: "hidden",
+        transform: "translateY(24px)",
+      }}
     >
       <section
         className={`py-12 rounded-[50%_50%_50%_50%/0%_0%_9%_10%] w-full h-full ${

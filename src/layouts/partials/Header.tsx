@@ -44,14 +44,11 @@ const Header: React.FC = () => {
     return false;
   };
 
-  // Animación inicial del logo y navegación - CORREGIDO: usar set + to
   useGSAP(() => {
     const tl = gsap.timeline();
 
     if (logoRef.current) {
-      // Establecer valores iniciales primero
       gsap.set(logoRef.current, { scale: 0, rotation: -180 });
-      // Luego animar hacia los valores finales
       tl.to(logoRef.current, {
         scale: 1,
         rotation: 0,
@@ -61,9 +58,7 @@ const Header: React.FC = () => {
     }
 
     if (navItemsRef.current.length > 0) {
-      // Establecer valores iniciales primero
       gsap.set(navItemsRef.current, { opacity: 0, y: -20 });
-      // Luego animar hacia los valores finales
       tl.to(
         navItemsRef.current,
         {
@@ -136,7 +131,6 @@ const Header: React.FC = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  // CORREGIDO: Cerrar schedule con animación completa antes de cambiar estado
   const handleCloseSchedule = () => {
     if (scheduleRef.current) {
       gsap.to(scheduleRef.current, {
@@ -145,7 +139,6 @@ const Header: React.FC = () => {
         duration: 0.3,
         ease: "power2.in",
         onComplete: () => {
-          // Cambiar el estado DESPUÉS de que termine la animación
           setShowSchedule(false);
         },
       });
