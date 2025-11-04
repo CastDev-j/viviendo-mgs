@@ -40,7 +40,7 @@ export const NotFoundPage = () => {
   }, []);
 
   return (
-    <div className="min-h-[60vh] bg-white flex items-center justify-center px-4">
+    <div className="min-h-[75vh] bg-white flex items-center justify-center px-4">
       <div className="text-center max-w-lg">
         <h1
           ref={numberRef}
