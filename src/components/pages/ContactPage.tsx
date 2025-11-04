@@ -173,6 +173,7 @@ export const ContactPage = () => {
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-5">
+              {/* Hidden fields for Web3Forms */}
               <input
                 type="hidden"
                 name="access_key"
@@ -183,43 +184,32 @@ export const ContactPage = () => {
                 className="hidden"
                 style={{ display: "none" }}
                 name="botcheck"
+                tabIndex={-1}
+                aria-hidden="true"
               />
 
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Nombre
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  placeholder="Ingresa tu nombre"
-                  required
-                  className="w-full px-4 py-3 border-2 rounded-md outline-none border-gray-300 focus:border-primary transition-colors"
-                  name="name"
-                />
-              </div>
+              {/* Grid layout: 2 columns on sm+, stacked on xs */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Nombre */}
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Nombre
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    placeholder="Ingresa tu nombre"
+                    required
+                    autoComplete="name"
+                    className="w-full px-4 py-3 border-2 rounded-md outline-none border-gray-300 focus:border-primary transition-colors"
+                    name="name"
+                  />
+                </div>
 
-              <div>
-                <label
-                  htmlFor="address"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Dirección
-                </label>
-                <input
-                  id="address"
-                  type="text"
-                  placeholder="Ingresa tu dirección"
-                  required
-                  className="w-full px-4 py-3 border-2 rounded-md outline-none border-gray-300 focus:border-primary transition-colors"
-                  name="address"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Email */}
                 <div>
                   <label
                     htmlFor="email"
@@ -232,10 +222,13 @@ export const ContactPage = () => {
                     type="email"
                     placeholder="Ingresa tu email"
                     required
+                    autoComplete="email"
                     className="w-full px-4 py-3 border-2 rounded-md outline-none border-gray-300 focus:border-primary transition-colors"
                     name="email"
                   />
                 </div>
+
+                {/* Teléfono */}
                 <div>
                   <label
                     htmlFor="phone"
@@ -248,58 +241,81 @@ export const ContactPage = () => {
                     type="tel"
                     placeholder="Introduce tu número"
                     required
+                    autoComplete="tel"
                     className="w-full px-4 py-3 border-2 rounded-md outline-none border-gray-300 focus:border-primary transition-colors"
                     name="phone"
                   />
                 </div>
-              </div>
 
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Asunto
-                </label>
-                <input
-                  id="subject"
-                  type="text"
-                  placeholder="Escribe el asunto"
-                  required
-                  className="w-full px-4 py-3 border-2 rounded-md outline-none border-gray-300 focus:border-primary transition-colors"
-                  name="subject"
-                />
-              </div>
+                {/* Dirección */}
+                <div>
+                  <label
+                    htmlFor="address"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Dirección
+                  </label>
+                  <input
+                    id="address"
+                    type="text"
+                    placeholder="Ingresa tu dirección"
+                    required
+                    autoComplete="street-address"
+                    className="w-full px-4 py-3 border-2 rounded-md outline-none border-gray-300 focus:border-primary transition-colors"
+                    name="address"
+                  />
+                </div>
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 mb-2"
-                >
-                  Mensaje
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  placeholder="Escribe tu mensaje aquí..."
-                  className="w-full px-4 py-3 border-2 rounded-md outline-none border-gray-300 focus:border-primary transition-colors resize-none h-36"
-                />
-              </div>
+                {/* Asunto - spans 2 columns */}
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Asunto
+                  </label>
+                  <input
+                    id="subject"
+                    type="text"
+                    placeholder="Escribe el asunto"
+                    required
+                    className="w-full px-4 py-3 border-2 rounded-md outline-none border-gray-300 focus:border-primary transition-colors"
+                    name="subject"
+                  />
+                </div>
 
-              <div className="flex justify-end">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-primary text-white py-3 px-12 rounded-md transition-all duration-300 text-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? "Enviando..." : "Enviar"}
-                </button>
+                {/* Mensaje - spans 2 columns */}
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    Mensaje
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    placeholder="Escribe tu mensaje aquí..."
+                    className="w-full px-4 py-3 border-2 rounded-md outline-none border-gray-300 focus:border-primary transition-colors resize-none h-36"
+                  />
+                </div>
+
+                {/* Submit - spans 2 columns, full width */}
+                <div className="sm:col-span-2">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary text-white py-3 px-12 rounded-md transition-all duration-300 text-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? "Enviando..." : "Enviar"}
+                  </button>
+                </div>
               </div>
 
               {formStatus && (
                 <div
-                  className={`text-center mt-4 font-medium ${
+                  className={`text-center font-medium ${
                     formStatus.includes("Gracias")
                       ? "text-green-600"
                       : "text-red-600"

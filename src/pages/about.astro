@@ -1,19 +1,19 @@
 ---
-import { FadeUpContainer } from "@/components/FadeUpContainer";
+import { FadeUpContainer } from "@/components/animations/FadeUpContainer";
 import { BiSolidParty } from "react-icons/bi";
 import { GiClothes } from "react-icons/gi";
 import { FaBus, FaStar } from "react-icons/fa";
 import { MdSmartToy } from "react-icons/md";
-import { FadeAnimation } from "@/components/FadeAnimation";
+import { FadeAnimation } from "@/components/animations/FadeAnimation";
 import Base from "@/layouts/Base.astro";
-import { CarouselComponent } from "@/components/Carousel";
-import Timeline from "@/components/Timeline.astro";
+import { CarouselComponent } from "@/components/sections/Carousel";
+import Timeline from "@/components/sections/Timeline.astro";
 ---
 
 <Base>
   <div class="flex flex-col w-full gap-20">
     <section class="section pt-24">
-      <div class="container">
+      <div class="container mx-auto">
         <div
           class="flex flex-col gap-8 w-full text-center mx-auto max-w-4xl px-6"
         >
@@ -116,7 +116,7 @@ import Timeline from "@/components/Timeline.astro";
     </section>
 
     <section class="section">
-      <div class="container px-6">
+      <div class="container px-6 mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           <div
             class="flex flex-col gap-6 text-center p-8 lg:p-10 bg-theme-light/40 rounded-2xl"
@@ -180,7 +180,7 @@ import Timeline from "@/components/Timeline.astro";
     </section>
 
     <section class="section">
-      <div class="container px-6">
+      <div class="container px-6 mx-auto">
         <div class="max-w-6xl mx-auto">
           <h2 class="text-center mb-12 text-3xl font-semibold">
             <FadeUpContainer client:visible>
@@ -247,7 +247,7 @@ import Timeline from "@/components/Timeline.astro";
     </section>
 
     <section class="section pb-20">
-      <div class="container px-6">
+      <div class="container px-6 mx-auto">
         <div class="max-w-5xl mx-auto">
           <h2 class="text-center mb-16 text-4xl font-bold">
             <FadeUpContainer client:visible>

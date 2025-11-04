@@ -1,5 +1,5 @@
 ---
-import BackToTopAstroButton from "@/components/BackToTopAstroButton.astro";
+import BackToTopAstroButton from "@/components/ui/BackToTopAstroButton.astro";
 import Footer from "@/layouts/partials/Footer.astro";
 import "@/styles/global.css";
 import { ClientRouter } from "astro:transitions";
@@ -18,7 +18,7 @@ const siteConfig = {
   baseURL: "https://viviendo-mi-gran-sueno.vercel.app",
   favicon: "/images/favicon.png",
   logo: "/images/logo.png",
-  author: "CastDev",
+  author: "Andrés Castillo",
   defaultImage: "/images/og-image.png",
   defaultDescription:
     "Viviendo Migransueño A.C. es una organización sin fines de lucro que cumple los sueños de niños y niñas con cáncer de escasos recursos en Celaya, Guanajuato. Ofrecemos viajes nacionales, fiestas, conocer a algún ídolo, juguetes anhelados y cambio de guardaropa.",
@@ -212,9 +212,14 @@ const breadcrumbSchema = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    {
+      /**
+       * Security headers like X-Frame-Options, X-Content-Type-Options, and
+       * Content-Security-Policy must be sent by the server as HTTP headers.
+       * Do not attempt to set them via <meta http-equiv> – browsers ignore them.
+       * See README.md for host-specific configuration.
+       */
+    }
 
     <link rel="alternate" hreflang="es-mx" href={canonicalURL} />
     <link rel="alternate" hreflang="es" href={canonicalURL} />
@@ -223,7 +228,7 @@ const breadcrumbSchema = {
   </head>
   <body class="flex flex-col items-center w-screen">
     <Header client:load />
-    <main>
+    <main class="w-full flex flex-col items-center">
       <slot />
     </main>
     <BackToTopAstroButton />

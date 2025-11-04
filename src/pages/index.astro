@@ -1,27 +1,20 @@
 ---
 import Base from "@/layouts/Base.astro";
-import { getEntry } from "astro:content";
-import type { CollectionEntry } from "astro:content";
-import { TestContainer } from "@/components/TestContainer";
+import { TestContainer } from "@/components/ui/TestContainer";
 import { LuHeartHandshake } from "react-icons/lu";
 import { MdEvent } from "react-icons/md";
-import { FadeAnimation } from "@/components/FadeAnimation";
+import { FadeAnimation } from "@/components/animations/FadeAnimation";
 import { FaFacebook, FaPlayCircle } from "react-icons/fa";
-import { FadeUpContainer } from "@/components/FadeUpContainer";
-
-const homepage = (await getEntry(
-  "homepage",
-  "-index"
-)) as CollectionEntry<"homepage">;
+import { FadeUpContainer } from "@/components/animations/FadeUpContainer";
 ---
 
 <Base>
-  <article class="animate-fade flex flex-col gap-12">
+  <article class="animate-fade flex flex-col gap-12 w-full">
     <FadeAnimation client:visible>
       <TestContainer client:visible type="primary">
-        <div class="container px-12">
+        <div class="w-full px-12">
           <div class="row text-center">
-            <div class="mx-auto lg:col-10">
+            <div class="mx-auto">
               <h1 class="font-primary text-primary text-4xl font-semibold">
                 Viviendo mi gran sueño A.C
               </h1>
@@ -33,7 +26,7 @@ const homepage = (await getEntry(
       </TestContainer>
     </FadeAnimation>
 
-    <section class="section mt-24">
+    <section class="section mt-24 mx-auto">
       <FadeUpContainer client:visible>
         <div class="container">
           <div class="row text-center">
@@ -173,7 +166,7 @@ const homepage = (await getEntry(
 
     <section class="section">
       <section>
-        <div class="container">
+        <div class="container mx-auto">
           <div
             class="mt-8 grid gap-x-8 lg:gap-y-6 gap-24 grid-cols-2 lg:grid-cols-3 w-full items-center"
           >
@@ -289,7 +282,7 @@ const homepage = (await getEntry(
 
     <section class="mb-24">
       <FadeUpContainer client:visible>
-        <div class="container flex justify-center items-center">
+        <div class="container flex justify-center items-center mx-auto">
           <div class="flex flex-col gap-6 w-full text-center p-6 max-w-3xl">
             <h2 class="text-3xl font-semibold">
               <span class="text-primary"> ¿Que hace Viviendo</span>

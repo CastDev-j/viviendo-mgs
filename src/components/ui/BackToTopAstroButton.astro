@@ -1,0 +1,79 @@
+---
+
+---
+
+<a
+  href="#top-bar"
+  id="scroll-to-top"
+  class="fixed bottom-4 left-4 bg-secondary text-white p-4 rounded-full shadow-lg opacity-0 transition-opacity flex items-center justify-center z-10 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50"
+>
+  <svg
+    id="progress-circle"
+    width="40"
+    height="40"
+    viewBox="0 0 100 100"
+    class="absolute"
+  >
+    <circle
+      cx="50"
+      cy="50"
+      r="40"
+      stroke="white"
+      stroke-width="6"
+      fill="none"
+      opacity="0.3"></circle>
+    <circle
+      id="progress"
+      cx="50"
+      cy="50"
+      r="40"
+      stroke="white"
+      stroke-width="6"
+      fill="none"
+      stroke-dasharray="251.2"
+      stroke-dashoffset="251.2"></circle>
+  </svg>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="h-6 w-6 relative"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M5 15l7-7 7 7"></path>
+  </svg>
+</a>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const scrollToTopButton = document.getElementById(
+      "scroll-to-top"
+    ) as HTMLElement;
+    const progressCircle = document.getElementById("progress") as HTMLElement;
+    const circumference = 2 * Math.PI * 40;
+
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const scrollHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const scrollProgress = scrollTop / scrollHeight;
+      const offset = circumference * (1 - scrollProgress);
+      progressCircle.style.strokeDashoffset = offset.toString();
+
+      if (scrollProgress > 0.1) {
+        scrollToTopButton.classList.remove("opacity-0");
+      } else {
+        scrollToTopButton.classList.add("opacity-0");
+      }
+    });
+
+    scrollToTopButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+</script>

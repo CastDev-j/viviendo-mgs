@@ -33,11 +33,11 @@ export const FadeDownAnimation: FC<FadeDownAnimationProps> = ({
             duration: 0.5,
             ease: "power2.out",
             delay: delay / 1000,
-          },
+          }
         );
       }
     },
-    { dependencies: [inView, delay], scope: el },
+    { dependencies: [inView, delay], scope: el }
   );
 
   return (
