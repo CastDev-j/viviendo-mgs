@@ -169,7 +169,7 @@ const Header: React.FC = () => {
       )}
 
       <div className="bg-[#fdf3f4]/90">
-        <article className="flex justify-between items-center py-1 text-primary text-md lg:max-w-4xl mx-4 lg:mx-auto">
+        <article className="flex justify-between items-center py-1 text-primary text-md lg:max-w-4xl px-4 lg:mx-auto">
           <div className="flex sm:gap-6 gap-2">
             <a
               href="tel:4611169054"

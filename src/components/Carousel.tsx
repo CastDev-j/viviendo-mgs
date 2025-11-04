@@ -12,13 +12,13 @@ const images = [
 
 export const CarouselComponent = () => {
   return (
-    <div className="relative w-full mx-auto">
+    <div className="w-full max-w-2xl mx-auto">
       <Swiper
         modules={[Autoplay, Pagination, A11y]}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
         loop
-        className="h-56 sm:h-72 md:h-96 lg:h-112 rounded-lg bg-[#fef2f3]"
+        className="w-full h-56 sm:h-72 md:h-96 rounded-lg bg-[#fef2f3]"
       >
         {images.map((src, idx) => (
           <SwiperSlide key={idx}>
