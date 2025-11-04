@@ -82,7 +82,7 @@ export const ContactPage = () => {
   };
 
   return (
-    <section className="section min-h-screen mt-24 mb-12">
+    <section className="container min-h-screen mt-24 mb-12">
       <h2
         ref={headerRef}
         className="flex justify-center text-center items-center mb-12 text-3xl font-semibold"
@@ -92,8 +92,11 @@ export const ContactPage = () => {
       </h2>
 
       <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div ref={detailsRef} className="flex flex-col gap-8 lg:px-12 px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 ">
+          <div
+            ref={detailsRef}
+            className="flex flex-col gap-8 px-6 lg:border-2 lg:rounded-lg lg:border-gray-100 lg:py-8 lg:px-6"
+          >
             <h3 className="text-2xl font-semibold text-center text-secondary">
               Detalles
             </h3>
@@ -173,7 +176,10 @@ export const ContactPage = () => {
             </div>
           </div>
 
-          <div ref={formRef}>
+          <div
+            ref={formRef}
+            className="lg:border-2 lg:rounded-lg lg:border-gray-100 lg:py-8 lg:px-6"
+          >
             <h3 className="text-2xl font-semibold mb-8 text-center text-primary">
               Formulario
             </h3>
