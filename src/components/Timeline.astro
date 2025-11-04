@@ -1,6 +1,6 @@
 ---
-import { FaLightbulb, FaBoxOpen, FaExternalLinkAlt } from "react-icons/fa";
-import { GiNewBorn } from "react-icons/gi";
+import { FaLightbulb, FaHeart, FaAward, FaHandsHelping } from "react-icons/fa";
+import { GiPartyPopper } from "react-icons/gi";
 import { FadeUpContainer } from "./FadeUpContainer";
 
 interface Timeline {
@@ -16,35 +16,42 @@ interface Timeline {
 
 const dates: Timeline[] = [
   {
-    title: "Fecha de creación de Viviendo Migransueño A.C",
-    date: "octubre 11, 2018",
+    title: "Fundación de Viviendo mi Gran Sueño A.C",
+    date: "2016",
     description:
-      "Viviendo mi gran sueño A.C nació de nuestro interés en ayudar a las personas menores de edad, que padecen Cáncer, donde su estado de salud es crítico. Nuestros objetivos e inspiración nos convierten en una asociación que nos enorgullece.",
+      "Viviendo mi gran sueño A.C nació de nuestro interés en ayudar a las personas menores de edad que padecen Cáncer, donde su estado de salud es crítico. Nuestros objetivos e inspiración nos convierten en una asociación que nos enorgullece.",
     icon: FaLightbulb,
   },
   {
-    title: "Lorem ipsum dolor sit amet",
-    date: "marzo 07, 2025",
+    title: "Primeros Sueños Cumplidos",
+    date: "2016 - 2020",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
-    icon: FaBoxOpen,
+      "Durante los primeros años comenzamos a cumplir los sueños de niños y niñas con cáncer en Celaya y sus alrededores. Organizamos fiestas, entregamos juguetes y realizamos nuestras primeras acciones para llevar alegría a quienes más lo necesitan.",
+    icon: GiPartyPopper,
   },
   {
-    title: "Lorem ipsum dolor sit amet",
-    date: "marzo 07, 2025",
+    title: "Cumpliendo el Sueño de Meli",
+    date: "diciembre, 2020",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
-    icon: FaBoxOpen,
+      "Organizamos una fiesta sorpresa para Melania, una joven diagnosticada con leucemia. Le entregamos muchos regalos, una recámara, un tocador, maquillaje y música de banda. Este evento marcó un momento especial para nuestra organización y reforzó nuestro compromiso.",
+    icon: FaHeart,
   },
   {
-    title: "Lorem ipsum dolor sit amet",
-    date: "marzo 07, 2025",
+    title: "Más de 100 Sueños Cumplidos",
+    date: "2016 - 2023",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
-    icon: FaBoxOpen,
+      "A lo largo de estos años, la asociación ha cumplido los sueños de más de 100 niños y niñas con enfermedades graves. Cada sueño cumplido representa esperanza, alegría y la demostración de que unidos podemos hacer la diferencia.",
+    icon: FaAward,
+  },
+  {
+    title: "Continuamos Cumpliendo Sueños",
+    date: "2024 - Actualidad",
+    description:
+      "Seguimos trabajando día a día para cumplir los sueños de niños y niñas con cáncer. Con el apoyo de donadores y voluntarios, continuamos llevando viajes nacionales, fiestas, encuentros con ídolos, juguetes anhelados y cambio de guardaropa a quienes lo necesitan.",
+    icon: FaHandsHelping,
     link: {
-      url: "/",
-      text: "Ejemplo de enlace",
+      url: "/contact",
+      text: "Únete como voluntario",
     },
   },
 ];
@@ -80,9 +87,8 @@ const dates: Timeline[] = [
         {event.link && (
           <a
             href={event.link.url}
-            class="inline-flex gap-2 items-center px-4 py-2 text-sm font-semibold text-primary bg-white border border-primary rounded-lg hover:border-secondary hover:text-secondary "
+            class="inline-flex gap-2 items-center px-4 py-2 text-sm font-semibold text-primary bg-white border border-primary rounded-lg hover:border-secondary hover:text-secondary transition-colors duration-300"
           >
-            <FaExternalLinkAlt />
             {event.link.text}
           </a>
         )}
