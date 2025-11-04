@@ -97,13 +97,13 @@ export const ContactPage = () => {
               Detalles
             </h3>
 
-            <div className="space-y-4">
-              <p className="text-gray-700 leading-relaxed">
+            <div className="flex flex-col gap-4 items-center w-full">
+              <p className="text-gray-700 text-center">
                 Si tienes alguna pregunta o necesitas ayuda, no dudes en
                 contactarnos. Estamos aquí para ayudarte.
               </p>
 
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-center">
                 Calle Capiro #116, Fracc. Xochipilli, Colonia Laureles 1ra
                 sección 38020 Celaya, México
               </p>
@@ -140,7 +140,7 @@ export const ContactPage = () => {
                   rel="noopener noreferrer"
                   className="group text-primary hover:text-secondary transition-all duration-300 p-4 rounded-lg flex flex-col items-center hover:bg-primary/5"
                 >
-                  <FaFacebook className="text-5xl mb-2" />
+                  <FaFacebook className="text-4xl mb-2" />
                   <span className="text-sm font-medium">Facebook</span>
                 </a>
 
@@ -150,7 +150,7 @@ export const ContactPage = () => {
                   rel="noopener noreferrer"
                   className="group text-primary hover:text-secondary transition-all duration-300 p-4 rounded-lg flex flex-col items-center hover:bg-primary/5"
                 >
-                  <FaInstagram className="text-5xl mb-2" />
+                  <FaInstagram className="text-4xl mb-2" />
                   <span className="text-sm font-medium">Instagram</span>
                 </a>
 
@@ -160,7 +160,7 @@ export const ContactPage = () => {
                   rel="noopener noreferrer"
                   className="group text-primary hover:text-secondary transition-all duration-300 p-4 rounded-lg flex flex-col items-center hover:bg-primary/5"
                 >
-                  <FaYoutube className="text-5xl mb-2" />
+                  <FaYoutube className="text-4xl mb-2" />
                   <span className="text-sm font-medium">YouTube</span>
                 </a>
               </div>
