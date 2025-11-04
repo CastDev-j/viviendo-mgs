@@ -44,24 +44,31 @@ const Header: React.FC = () => {
     return false;
   };
 
+  // Animación inicial del logo y navegación - CORREGIDO: usar set + to
   useGSAP(() => {
     const tl = gsap.timeline();
 
     if (logoRef.current) {
-      tl.from(logoRef.current, {
-        scale: 0,
-        rotation: -180,
+      // Establecer valores iniciales primero
+      gsap.set(logoRef.current, { scale: 0, rotation: -180 });
+      // Luego animar hacia los valores finales
+      tl.to(logoRef.current, {
+        scale: 1,
+        rotation: 0,
         duration: 0.8,
         ease: "back.out(1.7)",
       });
     }
 
     if (navItemsRef.current.length > 0) {
-      tl.from(
+      // Establecer valores iniciales primero
+      gsap.set(navItemsRef.current, { opacity: 0, y: -20 });
+      // Luego animar hacia los valores finales
+      tl.to(
         navItemsRef.current,
         {
-          opacity: 0,
-          y: -20,
+          opacity: 1,
+          y: 0,
           stagger: 0.1,
           duration: 0.5,
           ease: "power2.out",
@@ -129,8 +136,24 @@ const Header: React.FC = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  // CORREGIDO: Cerrar schedule con animación completa antes de cambiar estado
+  const handleCloseSchedule = () => {
+    if (scheduleRef.current) {
+      gsap.to(scheduleRef.current, {
+        height: 0,
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.in",
+        onComplete: () => {
+          // Cambiar el estado DESPUÉS de que termine la animación
+          setShowSchedule(false);
+        },
+      });
+    }
+  };
+
   return (
-    <>
+    <div className="w-full">
       {showSchedule && (
         <div
           ref={scheduleRef}
@@ -143,7 +166,7 @@ const Header: React.FC = () => {
             </div>
           </div>
           <button
-            onClick={() => setShowSchedule(false)}
+            onClick={handleCloseSchedule}
             className="text-primary hover:text-neutral-950 cursor-pointer transition-colors p-2"
             aria-label="Cerrar horario"
           >
@@ -196,7 +219,7 @@ const Header: React.FC = () => {
         </article>
       </div>
 
-      <header className="header flex flex-col justify-between items-center py-4 md:py-6 px-8">
+      <header className="header flex flex-col justify-between items-center py-4 sm:py-6 px-8">
         <a
           ref={logoRef}
           href="/"
@@ -291,7 +314,7 @@ const Header: React.FC = () => {
           </ul>
         </nav>
       </header>
-    </>
+    </div>
   );
 };
 
