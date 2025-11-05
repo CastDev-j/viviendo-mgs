@@ -198,15 +198,18 @@ const breadcrumbSchema = {
     <link rel="icon" type="image/png" sizes="32x32" href={siteConfig.favicon} />
     <link rel="apple-touch-icon" href={siteConfig.favicon} />
 
-    <!-- Preload critical assets -->
-    <link
-      rel="preload"
-      href="/images/hero-bg.avif"
-      as="image"
-      type="image/avif"
-      fetchpriority="high"
-    />
-    <link rel="preload" href="/src/styles/global.css" as="style" />
+    <!-- Preload critical assets only on homepage -->
+    {
+      Astro.url.pathname === "/" && (
+        <link
+          rel="preload"
+          href="/images/hero-bg.avif"
+          as="image"
+          type="image/avif"
+          fetchpriority="high"
+        />
+      )
+    }
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
