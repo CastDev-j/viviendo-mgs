@@ -175,24 +175,27 @@ const Header: React.FC = () => {
             <a
               href="tel:4611169054"
               className="flex items-center gap-2 text-primary hover:text-neutral-950 cursor-pointer transition-colors p-2"
+              aria-label="Llamar al 461 116 9054"
             >
-              <FaPhoneAlt />
+              <FaPhoneAlt aria-hidden="true" />
               <span className="lg:flex hidden">461 116 9054</span>
             </a>
 
             <a
               href="mailto:viviendo.mgsueno@gmail.com"
               className="flex items-center gap-2 text-primary hover:text-neutral-950 cursor-pointer transition-colors p-2"
+              aria-label="Enviar correo a viviendo.mgsueno@gmail.com"
             >
-              <IoMdMail className="text-lg" />
+              <IoMdMail className="text-lg" aria-hidden="true" />
               <span className="sm:flex hidden">viviendo.mgsueno@gmail.com</span>
             </a>
 
             <button
               onClick={() => setShowSchedule(true)}
               className="flex items-center gap-2 text-primary hover:text-neutral-950 cursor-pointer transition-colors p-2"
+              aria-label="Mostrar horario de atención"
             >
-              <FaClock className="cursor-pointer" />
+              <FaClock className="cursor-pointer" aria-hidden="true" />
               <span className="sm:flex hidden">
                 Lun.-Dom. de 9:00 AM - 5:00 PM
               </span>
@@ -218,22 +221,32 @@ const Header: React.FC = () => {
           ref={logoRef}
           href="/"
           className="hidden sm:flex items-center text-2xl justify-center py-2 px-4 border-4 rounded-full mb-6 border-e-theme-light border-b-theme-light border-t-accent border-l-accent"
+          aria-label="Viviendo MGS — Inicio"
         >
-          <img src="/images/logo.png" alt="logo" className="h-24" />
+          <img
+            src="/images/logo.png"
+            alt="Viviendo MGS — Inicio"
+            className="h-24"
+          />
         </a>
 
         <div className="w-full flex sm:hidden justify-between items-center">
           <a
             href="/"
             className="flex items-center text-2xl gap-2 py-1.5 px-2 border-4 rounded-full border-e-theme-light border-b-theme-light border-t-accent border-l-accent"
+            aria-label="Viviendo MGS — Inicio"
           >
-            <img src="/images/logo.png" alt="logo" className="h-10" />
+            <img
+              src="/images/logo.png"
+              alt="Viviendo MGS — Inicio"
+              className="h-10"
+            />
           </a>
 
           <button
             onClick={toggleMobileMenu}
             className="flex cursor-pointer items-center p-2"
-            aria-label="Toggle menu"
+            aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={mobileMenuOpen}
           >
             {!mobileMenuOpen ? (

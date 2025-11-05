@@ -14,14 +14,15 @@ export interface Props {
 }
 
 const siteConfig = {
-  title: "Viviendo Migransueño",
+  title: "Viviendo Migransueño A.C.",
+  tagline: "Cumpliendo Sueños de Niños con Cáncer en Celaya",
   baseURL: "https://viviendo-mi-gran-sueno.vercel.app",
   favicon: "/images/favicon.png",
   logo: "/images/logo.png",
   author: "Andrés Castillo",
   defaultImage: "/images/og-image.png",
   defaultDescription:
-    "Viviendo Migransueño A.C. es una organización sin fines de lucro que cumple los sueños de niños y niñas con cáncer de escasos recursos en Celaya, Guanajuato. Ofrecemos viajes nacionales, fiestas, conocer a algún ídolo, juguetes anhelados y cambio de guardaropa.",
+    "Viviendo Migransueño (Viviendo mi gran sueño) es una asociación civil sin fines de lucro que cumple los sueños de niños y niñas con cáncer de escasos recursos en Celaya, Guanajuato. Ofrecemos viajes, fiestas, encuentros con ídolos, juguetes y apoyo integral.",
   phone: "+52-461-116-9054",
   email: "viviendo.mgsueno@gmail.com",
   address: {
@@ -54,17 +55,30 @@ const {
 } = Astro.props;
 
 const fullTitle =
-  title === siteConfig.title ? title : `${title} | ${siteConfig.title}`;
+  title === siteConfig.title
+    ? `${title} - ${siteConfig.tagline}`
+    : `${title} | ${siteConfig.title}`;
 const fullImageURL = new URL(image, Astro.site).href;
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "NGO",
   name: "Viviendo Migransueño A.C.",
-  alternateName: "Viviendo mi gran sueño",
+  alternateName: [
+    "Viviendo mi gran sueño",
+    "Viviendo Migransueno",
+    "Migransueño",
+  ],
   url: siteConfig.baseURL,
   logo: new URL(siteConfig.logo, Astro.site).href,
+  image: fullImageURL,
   description: siteConfig.defaultDescription,
+  founder: {
+    "@type": "Person",
+    name: siteConfig.author,
+  },
+  foundingDate: "2020",
+  slogan: siteConfig.tagline,
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.street,
@@ -78,14 +92,22 @@ const organizationSchema = {
     latitude: siteConfig.coordinates.lat,
     longitude: siteConfig.coordinates.lng,
   },
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: siteConfig.phone,
-    contactType: "customer service",
-    email: siteConfig.email,
-    areaServed: "MX",
-    availableLanguage: ["Spanish", "es"],
-  },
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: siteConfig.phone,
+      contactType: "customer service",
+      email: siteConfig.email,
+      areaServed: "MX",
+      availableLanguage: ["Spanish", "es"],
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "donations",
+      email: siteConfig.email,
+      url: siteConfig.baseURL + "/donaciones",
+    },
+  ],
   openingHours: "Mo-Su 09:00-18:00",
   sameAs: [
     siteConfig.social.facebook,
@@ -103,16 +125,20 @@ const organizationSchema = {
   },
   knowsAbout: [
     "Cáncer infantil",
-    "Apoyo a niños",
+    "Apoyo a niños con cáncer",
     "Cumplimiento de sueños",
     "Organización sin fines de lucro",
+    "ONG Celaya",
+    "Apoyo social Guanajuato",
   ],
+  nonprofitStatus: "NonprofitANBI",
 };
 
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: siteConfig.title,
+  alternateName: "Viviendo mi gran sueño",
   url: siteConfig.baseURL,
   description: description,
   inLanguage: "es-MX",
@@ -138,40 +164,54 @@ const breadcrumbSchema = {
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es-MX">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Primary Meta Tags -->
     <title>{fullTitle}</title>
     <meta name="title" content={fullTitle} />
     <meta name="description" content={description} />
     <meta name="author" content={siteConfig.author} />
+
+    <!-- Palabras clave optimizadas para búsquedas específicas -->
     <meta
       name="keywords"
-      content="niños con cáncer, apoyo infantil, organización sin fines de lucro, ONG México, Celaya, Guanajuato, sueños niños, donaciones México, voluntariado, cáncer infantil, ayuda niños, fundación niños, viajes niños, fiestas infantiles"
+      content="viviendo mi gran sueño, viviendo migransueño, migransueño celaya, niños con cáncer celaya, apoyo niños cáncer guanajuato, fundación niños cáncer, ONG cáncer infantil, cumplir sueños niños, asociación civil celaya, donaciones niños cáncer, voluntariado celaya, ayuda niños cáncer, organización sin fines de lucro celaya, sueños infantiles, apoyo oncológico infantil, viviendo mi gran sueño AC"
     />
 
+    <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
 
+    <!-- Favicons -->
     <link rel="shortcut icon" href={siteConfig.favicon} />
     <link rel="icon" type="image/png" sizes="32x32" href={siteConfig.favicon} />
     <link rel="apple-touch-icon" href={siteConfig.favicon} />
 
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={fullImageURL} />
+    <meta property="og:image:alt" content={`Logo de ${siteConfig.title}`} />
     <meta property="og:site_name" content={siteConfig.title} />
     <meta property="og:locale" content="es_MX" />
+    <meta property="fb:app_id" content="TU_FB_APP_ID" />
 
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={fullTitle} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={fullImageURL} />
+    <meta
+      property="twitter:image:alt"
+      content={`Logo de ${siteConfig.title}`}
+    />
 
+    <!-- Geo tags -->
     <meta name="geo.region" content="MX-GUA" />
     <meta
       name="geo.placename"
@@ -186,16 +226,32 @@ const breadcrumbSchema = {
       content={`${siteConfig.coordinates.lat}, ${siteConfig.coordinates.lng}`}
     />
 
+    <!-- Robots -->
     {noindex && <meta name="robots" content="noindex, nofollow" />}
-    {!noindex && <meta name="robots" content="index, follow" />}
+    {
+      !noindex && (
+        <meta
+          name="robots"
+          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
+      )
+    }
     <meta
       name="googlebot"
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     />
+    <meta name="bingbot" content="index, follow" />
 
+    <!-- Theme -->
     <meta name="theme-color" content="#FF69B4" />
     <meta name="msapplication-TileColor" content="#FF69B4" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
 
+    <!-- Verificación de motores de búsqueda (añade tus códigos) -->
+    <!-- <meta name="google-site-verification" content="TU_CODIGO_AQUI" /> -->
+    <!-- <meta name="msvalidate.01" content="TU_CODIGO_BING_AQUI" /> -->
+
+    <!-- Structured Data -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify(organizationSchema)}
@@ -209,29 +265,29 @@ const breadcrumbSchema = {
       set:html={JSON.stringify(breadcrumbSchema)}
     />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-
-    {
-      /**
-       * Security headers like X-Frame-Options, X-Content-Type-Options, and
-       * Content-Security-Policy must be sent by the server as HTTP headers.
-       * Do not attempt to set them via <meta http-equiv> – browsers ignore them.
-       * See README.md for host-specific configuration.
-       */
-    }
-
+    <!-- Alternate languages -->
     <link rel="alternate" hreflang="es-mx" href={canonicalURL} />
     <link rel="alternate" hreflang="es" href={canonicalURL} />
+    <link rel="alternate" hreflang="x-default" href={siteConfig.baseURL} />
 
     <ClientRouter />
   </head>
   <body class="flex flex-col items-center w-screen">
+    <!-- Skip to main content for accessibility -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded"
+    >
+      Saltar al contenido principal
+    </a>
+
     <Header client:load />
-    <main class="w-full flex flex-col items-center">
+    <main id="main-content" class="w-full flex flex-col items-center">
       <slot />
     </main>
     <BackToTopAstroButton />
     <Footer />
+
+    <!-- Etiquetas adicionales de seguimiento pueden ir aquí -->
   </body>
 </html>
