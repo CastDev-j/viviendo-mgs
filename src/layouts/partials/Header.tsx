@@ -49,22 +49,20 @@ const Header: React.FC = () => {
     const tl = gsap.timeline();
 
     if (logoRef.current) {
-      gsap.set(logoRef.current, { scale: 0, rotation: -180 });
+      gsap.set(logoRef.current, { opacity: 0 });
       tl.to(logoRef.current, {
-        scale: 1,
-        rotation: 0,
-        duration: 0.8,
-        ease: "back.out(1.7)",
+        opacity: 1,
+        duration: 0.4,
+        ease: "power2.out",
       });
     }
 
     if (navItemsRef.current.length > 0) {
-      gsap.set(navItemsRef.current, { opacity: 0, y: -20 });
+      gsap.set(navItemsRef.current, { opacity: 0 });
       tl.to(
         navItemsRef.current,
         {
           opacity: 1,
-          y: 0,
           stagger: 0.1,
           duration: 0.5,
           ease: "power2.out",
@@ -226,11 +224,11 @@ const Header: React.FC = () => {
           <img
             src="/images/logo.png"
             alt="Viviendo MGS — Inicio"
-            className="h-24"
+            className="h-24 w-24"
           />
         </a>
 
-        <div className="w-full flex sm:hidden justify-between items-center">
+        <div className="w-full flex sm:hidden justify-between items-center ">
           <a
             href="/"
             className="flex items-center text-2xl gap-2 py-1.5 px-2 border-4 rounded-full border-e-theme-light border-b-theme-light border-t-accent border-l-accent"
@@ -239,7 +237,7 @@ const Header: React.FC = () => {
             <img
               src="/images/logo.png"
               alt="Viviendo MGS — Inicio"
-              className="h-10"
+              className="h-10 w-10"
             />
           </a>
 
@@ -250,11 +248,11 @@ const Header: React.FC = () => {
             aria-expanded={mobileMenuOpen}
           >
             {!mobileMenuOpen ? (
-              <svg className="h-6 fill-current" viewBox="0 0 20 20">
+              <svg className="h-6 w-6 fill-current" viewBox="0 0 20 20">
                 <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
               </svg>
             ) : (
-              <svg className="h-6 fill-current" viewBox="0 0 20 20">
+              <svg className="h-6 w-6 fill-current" viewBox="0 0 20 20">
                 <polygon
                   points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
                   transform="rotate(45 10 10)"

@@ -16,12 +16,11 @@ export const FadeUpContainer: FC<FadeUpContainerProps> = ({ children }) => {
     () => {
       if (!el.current) return;
       if (inView) {
-        gsap.set(el.current, { opacity: 0, y: 24 });
+        gsap.set(el.current, { opacity: 0 });
 
         gsap.to(el.current, {
           opacity: 1,
-          y: 0,
-          duration: 0.6,
+          duration: 0.4,
           ease: "power2.out",
         });
       }
@@ -35,7 +34,7 @@ export const FadeUpContainer: FC<FadeUpContainerProps> = ({ children }) => {
         el.current = node as HTMLDivElement;
         ref(node);
       }}
-      style={{ opacity: 0, transform: "translateY(24px)" }}
+      style={{ opacity: 0, willChange: "opacity" }}
     >
       {children}
     </section>

@@ -169,6 +169,15 @@ const breadcrumbSchema = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Preconnect para recursos externos críticos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- DNS Prefetch para otros recursos -->
+    <link rel="dns-prefetch" href="https://www.facebook.com" />
+    <link rel="dns-prefetch" href="https://www.instagram.com" />
+    <link rel="dns-prefetch" href="https://www.youtube.com" />
+
     <!-- Primary Meta Tags -->
     <title>{fullTitle}</title>
     <meta name="title" content={fullTitle} />
@@ -188,6 +197,16 @@ const breadcrumbSchema = {
     <link rel="shortcut icon" href={siteConfig.favicon} />
     <link rel="icon" type="image/png" sizes="32x32" href={siteConfig.favicon} />
     <link rel="apple-touch-icon" href={siteConfig.favicon} />
+
+    <!-- Preload critical assets -->
+    <link
+      rel="preload"
+      href="/images/hero-bg.avif"
+      as="image"
+      type="image/avif"
+      fetchpriority="high"
+    />
+    <link rel="preload" href="/src/styles/global.css" as="style" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -251,24 +270,38 @@ const breadcrumbSchema = {
     <!-- <meta name="google-site-verification" content="TU_CODIGO_AQUI" /> -->
     <!-- <meta name="msvalidate.01" content="TU_CODIGO_BING_AQUI" /> -->
 
-    <!-- Structured Data -->
+    <!-- Structured Data - Non-blocking -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify(organizationSchema)}
+      async
     />
     <script
       type="application/ld+json"
       set:html={JSON.stringify(websiteSchema)}
+      async
     />
     <script
       type="application/ld+json"
       set:html={JSON.stringify(breadcrumbSchema)}
+      async
     />
 
     <!-- Alternate languages -->
     <link rel="alternate" hreflang="es-mx" href={canonicalURL} />
     <link rel="alternate" hreflang="es" href={canonicalURL} />
     <link rel="alternate" hreflang="x-default" href={siteConfig.baseURL} />
+
+    <!-- Inline critical CSS to reduce render-blocking -->
+    <style is:inline>
+      body {
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
 
     <ClientRouter />
   </head>
