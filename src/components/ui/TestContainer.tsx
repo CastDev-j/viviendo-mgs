@@ -13,11 +13,12 @@ export const TestContainer: FC<TestContainerProps> = ({ children, type }) => {
     () => {
       if (!root.current) return;
 
-      gsap.set(root.current, { opacity: 0 });
+      gsap.set(root.current, { autoAlpha: 0, y: 24 });
 
       gsap.to(root.current, {
-        opacity: 1,
-        duration: 0.4,
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.6,
         ease: "power2.out",
       });
     },
@@ -30,9 +31,10 @@ export const TestContainer: FC<TestContainerProps> = ({ children, type }) => {
       className="rounded-[50%_50%_50%_50%/0%_0%_9%_10%] bg-[url('/images/hero-bg.avif')] bg-cover bg-center flex items-center justify-center w-full h-full overflow-hidden"
       style={{
         opacity: 0,
+        visibility: "hidden",
+        transform: "translateY(24px)",
         backgroundImage: "url('/images/hero-bg.avif')",
         contentVisibility: "auto",
-        willChange: "opacity",
       }}
     >
       <section

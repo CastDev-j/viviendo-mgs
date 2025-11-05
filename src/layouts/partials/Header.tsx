@@ -49,20 +49,22 @@ const Header: React.FC = () => {
     const tl = gsap.timeline();
 
     if (logoRef.current) {
-      gsap.set(logoRef.current, { opacity: 0 });
+      gsap.set(logoRef.current, { scale: 0, rotation: -180 });
       tl.to(logoRef.current, {
-        opacity: 1,
-        duration: 0.4,
-        ease: "power2.out",
+        scale: 1,
+        rotation: 0,
+        duration: 0.8,
+        ease: "back.out(1.7)",
       });
     }
 
     if (navItemsRef.current.length > 0) {
-      gsap.set(navItemsRef.current, { opacity: 0 });
+      gsap.set(navItemsRef.current, { opacity: 0, y: -20 });
       tl.to(
         navItemsRef.current,
         {
           opacity: 1,
+          y: 0,
           stagger: 0.1,
           duration: 0.5,
           ease: "power2.out",

@@ -24,11 +24,12 @@ export const FadeAnimation: FC<FadeAnimationProps> = ({
     () => {
       if (!el.current) return;
       if (inView) {
-        gsap.set(el.current, { opacity: 0 });
+        gsap.set(el.current, { opacity: 0, y: 16 });
 
         gsap.to(el.current, {
           opacity: 1,
-          duration: 0.4,
+          y: 0,
+          duration: 0.5,
           ease: "power2.out",
           delay: delay / 1000,
         });
@@ -43,7 +44,7 @@ export const FadeAnimation: FC<FadeAnimationProps> = ({
         el.current = node as HTMLDivElement;
         ref(node);
       }}
-      style={{ opacity: 0, willChange: "opacity" }}
+      style={{ opacity: 0, transform: "translateY(16px)" }}
     >
       {children}
     </section>
